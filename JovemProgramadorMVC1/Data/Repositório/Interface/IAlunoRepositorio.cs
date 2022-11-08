@@ -2,7 +2,7 @@
 
 namespace JovemProgramadorMVC1.Data.Repositório.Interface
 {
-    interface IAlunoReposotorio
+    interface IAlunoRepositorio
     {
         AlunoModel InserirAluno(AlunoModel alunos);
     }

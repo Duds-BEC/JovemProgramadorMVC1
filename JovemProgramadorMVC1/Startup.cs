@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using JovemProgramadorMVC1.Data.Repositório.Interface;
 
 namespace JovemProgramadorMVC1
 {
@@ -21,13 +22,12 @@ namespace JovemProgramadorMVC1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-                services.AddDbContext<JovemProgramadorContexto>((serviceProvider, options) =>
-                { 
-                    options.UseSqlServer(Configuration.GetSection("ConnectionStrings")["StringConexao"].ToString());
-                });
-                services.AddControllersWithViews();
+            services.AddDbContext<JovemProgramadorContexto>((serviceProvider, options) =>
+            {
+                options.UseSqlServer(Configuration.GetSection("ConnectionStrings")["StringConexao"].ToString());
+            });
 
-                //services.AddScoped<IAlunoRepositorio, AlunoRepositorio>();
+            services.AddScoped<IAlunoRepositorio, AlunoRepositorio>();
 
             services.AddControllersWithViews();
         }
