@@ -1,22 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using JovemProgramadorMVC1.Data.Repositório.Interface;
+﻿using JovemProgramadorMVC1.Data.Repositorio.Interface;
 using JovemProgramadorMVC1.Models;
-
-
+using Microsoft.AspNetCore.Mvc;
 namespace JovemProgramadorMVC1.Controllers
 {
     public class AlunosController : Controller
     {
         private readonly IAlunoRepositorio _alunoRepositorio;
-
         public AlunosController(IAlunoRepositorio alunoRepositorio)
         {
-            _alunoRepositorio = alunoRepositorio; 
+            _alunoRepositorio = alunoRepositorio;
         }
-
         public IActionResult Index()
         {
-            return View();
+            var alunos = _alunoRepositorio.BuscarAlunos();
+            return View(alunos);
         }
         public IActionResult Adicionar()
         {

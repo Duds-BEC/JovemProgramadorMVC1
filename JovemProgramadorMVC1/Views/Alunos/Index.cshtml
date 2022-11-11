@@ -1,7 +1,5 @@
-﻿<div>
-    <div>
-        <h1>Dados dos Alunos</h1>
-    </div>
+﻿@model List<AlunoModel>
+<div>
     <table class="table">
         <thead>
             <tr>
@@ -14,33 +12,20 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>18</td>
-                <td>(47) 99834-2901</td>
-                <td>marklee@gmail.com</td>
-                <td>88463-092</td>
-                <td><button type="button" class="btn btn-primary">Endereço</button> </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>17</td>
-                <td>(47) 96382-0184</td>
-                <td>jacobasketball@gmail.com</td>
-                <td>88637-720</td>
-                <td><button type="button" class="btn btn-primary">Endereço</button> </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Violet</td>
-                <td>17</td>
-                <td>(47) 92731-0973</td>
-                <td>violettheflower@gmail.com</td>
-                <td>88726-279</td>
-                <td><button type="button" class="btn btn-primary">Endereço</button> </td>
-            </tr>
+            @if (Model != null && Model.Any())
+            {
+                foreach (AlunoModel aluno in Model)
+                {
+                    <tr>
+                        <td>@aluno.Nome</td>
+                        <td>@aluno.Idade</td>
+                        <td>@aluno.Contato</td>
+                        <td>@aluno.Email</td>
+                        <td>@aluno.Cep</td>
+                        <td><button type="button" class="btn btn-primary">Endereço</button> </td>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
     <div class="d-grid gap-2 d-md-flex justify-content-md-center">

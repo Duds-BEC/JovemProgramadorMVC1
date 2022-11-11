@@ -1,21 +1,24 @@
-﻿using JovemProgramadorMVC1.Models;
-
-namespace JovemProgramadorMVC1.Data.Repositório
+﻿using JovemProgramadorMVC1.Data.Repositorio.Interface;
+using JovemProgramadorMVC1.Models;
+using System.Collections.Generic;
+using System.Linq;
+namespace JovemProgramadorMVC1.Data.Repositorio
 {
-    public class AlunoRepositorio
+    public class AlunoRepositorio : IAlunoRepositorio
     {
         private readonly JovemProgramadorContexto _jovemProgramadorContexto;
-
         public AlunoRepositorio(JovemProgramadorContexto jovemProgramadorContexto)
-
         {
             _jovemProgramadorContexto = jovemProgramadorContexto;
         }
-
         public void InserirAluno(AlunoModel alunos)
         {
             _jovemProgramadorContexto.Aluno.Add(alunos);
             _jovemProgramadorContexto.SaveChanges();
+        }
+        public List<AlunoModel> BuscarAlunos()
+        {
+            return _jovemProgramadorContexto.Aluno.ToList();
         }
     }
 }

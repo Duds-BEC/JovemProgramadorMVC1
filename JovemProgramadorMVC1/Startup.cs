@@ -1,12 +1,12 @@
 using JovemProgramadorMVC1.Data;
-using JovemProgramadorMVC1.Data.Repositório;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using JovemProgramadorMVC1.Data.Repositório.Interface;
+using JovemProgramadorMVC1.Data.Repositorio.Interface;
+using JovemProgramadorMVC1.Data.Repositorio;
 
 namespace JovemProgramadorMVC1
 {

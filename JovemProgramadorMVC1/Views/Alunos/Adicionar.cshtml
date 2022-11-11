@@ -1,34 +1,29 @@
 ﻿@model AlunoModel
-
 <form asp-controller="Alunos" asp-action="InserirAluno" method="post">
-
-    <div class="col-7 mb-3">
-        <label for="exampleInputNome" class="form-label">Nome</label>
-        <input type="text" asp-for="Nome" class="form-control">
+    <div>
+        <div class="col-7 mb-3">
+            <label for="exampleInputNome" class="form-label">Nome</label>
+            <input type="text" asp-for="Nome" class="form-control">
+        </div>
+        <div class="col-2 mb-3">
+            <label for="exampleinputIdade" class="form-label">Idade</label>
+            <input type="text" asp-for="Idade" class="form-control">
+        </div>
+        <div class="col-3 mb-3">
+            <label for="exampleFormControlInputContato" class="form-label">Contato</label>
+            <input type="text" asp-for="Contato" class="form-control" placeholder="(00) 00000-0000">
+        </div>
+        <div class="col-3 mb-3">
+            <label for="exampleInputEmail" class="form-label">Email</label>
+            <input type="text" asp-for="Email" class="form-control">
+        </div>
+        <div class="col-3 mb-3">
+            <label for="exampleFormControlInputCep" class="form-label">Cep</label>
+            <input type="text" asp-for="Cep" class="form-control" placeholder="00000-00">
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <button class="btn btn-primary" type="submit">Adicionar</button>
+            <button class="btn btn-primary" type="button">Voltar</button>
+        </div>
     </div>
-
-    <div class="col-2 mb-3">
-        <label for="exampleinputIdade" class="form-label">Idade</label>
-        <input type="text" asp-for="Idade" class="form-control">
-    </div>
-
-    <div class="col-3 mb-3">
-        <label for="exampleFormControlInputContato" class="form-label">Contato</label>
-        <input type="text" asp-for="Contato" class="form-control"  placeholder="(00) 00000-0000">
-    </div>
-
-    <div class="col-3 mb-3">
-        <label for="exampleInputEmail" class="form-label">Email</label>
-        <input type="text" asp-for="Email" class="form-control">
-    </div>
-
-    <div class="col-3 mb-3">
-        <label for="exampleFormControlInputCep" class="form-label">Cep</label>
-        <input type="text" asp-for="Cep" class="form-control" placeholder="00000-00">
-    </div>
-
-    <div class="text-center">
-        <button class="btn btn-primary" type="submit">Adicionar</button>
-    </div>
-
 </form>

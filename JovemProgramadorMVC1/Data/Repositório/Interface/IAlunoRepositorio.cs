@@ -1,9 +1,10 @@
 ﻿using JovemProgramadorMVC1.Models;
-
-namespace JovemProgramadorMVC1.Data.Repositório.Interface
+using System.Collections.Generic;
+namespace JovemProgramadorMVC1.Data.Repositorio.Interface
 {
-    interface IAlunoRepositorio
+    public interface IAlunoRepositorio
     {
-        AlunoModel InserirAluno(AlunoModel alunos);
+        void InserirAluno(AlunoModel alunos);
+        List<AlunoModel> BuscarAlunos();
     }
 }
