@@ -24,5 +24,9 @@ namespace JovemProgramadorMVC1.Controllers
             _alunoRepositorio.InserirAluno(alunos);
             return RedirectToAction("Index");
         }
+        public IActionResult Editar()
+        {
+            return View();
+        }
     }
 }

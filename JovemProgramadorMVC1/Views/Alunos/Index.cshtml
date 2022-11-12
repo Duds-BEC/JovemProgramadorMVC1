@@ -16,14 +16,16 @@
             {
                 foreach (AlunoModel aluno in Model)
                 {
-                    <tr>
-                        <td>@aluno.Nome</td>
-                        <td>@aluno.Idade</td>
-                        <td>@aluno.Contato</td>
-                        <td>@aluno.Email</td>
-                        <td>@aluno.Cep</td>
-                        <td><button type="button" class="btn btn-primary">Endereço</button> </td>
-                    </tr>
+            <tr>
+                <td>@aluno.Nome</td>
+                <td>@aluno.Idade</td>
+                <td>@aluno.Contato</td>
+                <td>@aluno.Email</td>
+                <td>@aluno.Cep</td>
+                <td><button type="button" class="btn btn-primary">Endereço</button> </td>
+                <td><a type="button" class="btn btn-primary" asp-controller="Alunos" asp-action="Editar">Editar</a> </td>
+                <td><button type="button" class="btn btn-primary">Excluir</button> </td>
+            </tr>
                 }
             }
         </tbody>

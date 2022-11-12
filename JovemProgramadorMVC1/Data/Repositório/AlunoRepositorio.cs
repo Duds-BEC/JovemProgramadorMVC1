@@ -20,5 +20,9 @@ namespace JovemProgramadorMVC1.Data.Repositorio
         {
             return _jovemProgramadorContexto.Aluno.ToList();
         }
+        public AlunoModel BuscarId(int id)
+        {
+            return _jovemProgramadorContexto.Aluno.FirstOrDefault(x => x.Id == id);
+        }
     }
 }
