@@ -3,7 +3,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Idade</th>
                 <th scope="col">Contato</th>
@@ -23,7 +22,7 @@
                 <td>@aluno.Email</td>
                 <td>@aluno.Cep</td>
                 <td><button type="button" class="btn btn-primary">Endereço</button> </td>
-                <td><a type="button" class="btn btn-primary" asp-controller="Alunos" asp-action="Editar">Editar</a> </td>
+                <td><a type="submit" class="btn btn-primary" asp-controller="Alunos" asp-action="Editar" asp-route-id="@aluno.Id">Editar</a> </td>
                 <td><button type="button" class="btn btn-primary">Excluir</button> </td>
             </tr>
                 }

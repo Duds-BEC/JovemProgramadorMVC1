@@ -1,5 +1,6 @@
 ﻿@model AlunoModel
-<form asp-controller="Alunos" asp-action="InserirAluno" method="post">
+
+<form asp-controller="Alunos" asp-action="Editar" method="post">
     <input type="hidden" asp-for="Id" />
     <div>
         <div class="col-7 mb-3">
@@ -24,6 +25,7 @@
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-center">
             <button class="btn btn-primary" type="submit">Editar</button>
+            <a class="btn btn-primary" type="button" asp-controller="Home" asp-action="Index">Voltar</a>
         </div>
     </div>
 </form>

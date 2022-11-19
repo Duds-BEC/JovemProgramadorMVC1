@@ -24,5 +24,11 @@ namespace JovemProgramadorMVC1.Data.Repositorio
         {
             return _jovemProgramadorContexto.Aluno.FirstOrDefault(x => x.Id == id);
         }
+
+        public void EditarAluno(AlunoModel aluno)
+        {
+            _jovemProgramadorContexto.Aluno.Update(aluno);
+            _jovemProgramadorContexto.SaveChanges();
+        }
     }
 }
