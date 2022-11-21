@@ -23,7 +23,7 @@
                 <td>@aluno.Cep</td>
                 <td><button type="button" class="btn btn-primary">Endereço</button> </td>
                 <td><a type="submit" class="btn btn-primary" asp-controller="Alunos" asp-action="Editar" asp-route-id="@aluno.Id">Editar</a> </td>
-                <td><button type="button" class="btn btn-primary">Excluir</button> </td>
+                <td><a type="button" class="btn btn-primary" asp-controller="Alunos" asp-action="ExcluirAluno" asp-route-id="@aluno.Id" method="post">Excluir</a> </td>
             </tr>
                 }
             }

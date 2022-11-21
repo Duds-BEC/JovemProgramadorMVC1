@@ -29,5 +29,15 @@ namespace JovemProgramadorMVC1.Controllers
             var aluno = _alunoRepositorio.BuscarId(id);
             return View(aluno);
         }
+        public IActionResult EditarAluno(AlunoModel alunos)
+        {
+            _alunoRepositorio.EditarAluno(alunos);
+            return RedirectToAction("Index");
+        }
+        public IActionResult ExcluirAluno(AlunoModel alunos)
+        {
+            _alunoRepositorio.ExcluirAluno(alunos);
+            return RedirectToAction("Index");
+        }
     }
 }
