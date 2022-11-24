@@ -21,7 +21,7 @@
                 <td>@aluno.Contato</td>
                 <td>@aluno.Email</td>
                 <td>@aluno.Cep</td>
-                <td><button type="button" class="btn btn-primary">Endereço</button> </td>
+                <td><a type="button" class="btn btn-primary" asp-controller="Aluno" asp-action="BuscarEndereco" asp-route-cep="@aluno.Cep">Endereço</a> </td>
                 <td><a type="submit" class="btn btn-primary" asp-controller="Alunos" asp-action="Editar" asp-route-id="@aluno.Id">Editar</a> </td>
                 <td><a type="button" class="btn btn-primary" asp-controller="Alunos" asp-action="ExcluirAluno" asp-route-id="@aluno.Id" method="post">Excluir</a> </td>
             </tr>
