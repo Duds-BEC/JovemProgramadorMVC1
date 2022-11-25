@@ -11,12 +11,7 @@ namespace JovemProgramadorMVC1.Controllers
     public class AlunosController : Controller
     {
         private readonly IAlunoRepositorio _alunoRepositorio;
-
         private readonly IConfiguration _configuration; 
-        public AlunosController(IAlunoRepositorio alunoRepositorio)
-        {
-            _alunoRepositorio = alunoRepositorio;
-        }
         public AlunosController(IAlunoRepositorio alunoRepositorio, IConfiguration configuration)
         {
             _alunoRepositorio = alunoRepositorio;
@@ -51,15 +46,15 @@ namespace JovemProgramadorMVC1.Controllers
             _alunoRepositorio.ExcluirAluno(alunos);
             return RedirectToAction("Index");
         }
-        public async Task<IActionResult> BuscarEndereco(string cep)
+        public async Task<IActionResult> BuscarEndereco(string Cep)
         {
-            cep = cep.Replace("-", "");
+            Cep = Cep.Replace("-", "");
 
             EnderecoModel enderecoModel = new();
 
             using var client = new HttpClient();
 
-            var result = await client.GetAsync(_configuration.GetSection("ApiCep")["BaseUrl"] + cep +"/json");
+            var result = await client.GetAsync(_configuration.GetSection("ApiCep")["BaseUrl"] + Cep +"/json");
 
             if(result.IsSuccessStatusCode)
             {
