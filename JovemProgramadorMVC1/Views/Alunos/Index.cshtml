@@ -1,4 +1,19 @@
-﻿@model List<AlunoModel>
+﻿@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success col-4">
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
+@if (TempData["MensagemSucessoEditar"] != null)
+{
+    <div class="alert alert-success col-4">
+        @TempData["MensagemSucessoEditar"]
+    </div>
+}
+
+
+@model List<AlunoModel>
 <div>
     <table class="table">
         <thead>
@@ -15,16 +30,16 @@
             {
                 foreach (AlunoModel aluno in Model)
                 {
-            <tr>
-                <td>@aluno.Nome</td>
-                <td>@aluno.Idade</td>
-                <td>@aluno.Contato</td>
-                <td>@aluno.Email</td>
-                <td>@aluno.Cep</td>
-                <td><a type="button" class="btn btn-primary" asp-controller="Aluno" asp-action="BuscarEndereco" asp-route-cep="@aluno.Cep">Endereço</a> </td>
-                <td><a type="submit" class="btn btn-primary" asp-controller="Alunos" asp-action="Editar" asp-route-id="@aluno.Id">Editar</a> </td>
-                <td><a type="button" class="btn btn-primary" asp-controller="Alunos" asp-action="ExcluirAluno" asp-route-id="@aluno.Id" method="post">Excluir</a> </td>
-            </tr>
+                    <tr>
+                        <td>@aluno.Nome</td>
+                        <td>@aluno.Idade</td>
+                        <td>@aluno.Contato</td>
+                        <td>@aluno.Email</td>
+                        <td>@aluno.Cep</td>
+                        <td><a type="button" class="btn btn-primary" asp-controller="Alunos" asp-action="BuscarEndereco" asp-route-cep="@aluno.Cep">Endereço</a> </td>
+                        <td><a type="submit" class="btn btn-primary" asp-controller="Alunos" asp-action="Editar" asp-route-id="@aluno.Id">Editar</a> </td>
+                        <td><a type="button" class="btn btn-primary" asp-controller="Alunos" asp-action="ExcluirAluno" asp-route-id="@aluno.Id" method="post">Excluir</a> </td>
+                    </tr>
                 }
             }
         </tbody>

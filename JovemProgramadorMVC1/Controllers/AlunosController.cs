@@ -28,8 +28,20 @@ namespace JovemProgramadorMVC1.Controllers
         }
         public IActionResult InserirAluno(AlunoModel alunos)
         {
-            _alunoRepositorio.InserirAluno(alunos);
-            return RedirectToAction("Index");
+            try
+            {
+                _alunoRepositorio.InserirAluno(alunos);
+
+                TempData["MensagemSucesso"] = "Aluno adicionado com sucesso!";
+
+                return RedirectToAction("Index");
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+            
         }
         public IActionResult Editar(int id)
         {
@@ -38,23 +50,34 @@ namespace JovemProgramadorMVC1.Controllers
         }
         public IActionResult EditarAluno(AlunoModel alunos)
         {
-            _alunoRepositorio.EditarAluno(alunos);
-            return RedirectToAction("Index");
+            try
+            {
+                _alunoRepositorio.EditarAluno(alunos);
+
+                TempData["MensagemSucessoEditar"] = "Aluno editado com sucesso!";
+                
+                return RedirectToAction("Index");
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
         }
         public IActionResult ExcluirAluno(AlunoModel alunos)
         {
             _alunoRepositorio.ExcluirAluno(alunos);
             return RedirectToAction("Index");
         }
-        public async Task<IActionResult> BuscarEndereco(string Cep)
+        public async Task<IActionResult> BuscarEndereco(string cep)
         {
-            Cep = Cep.Replace("-", "");
+            cep = cep.Replace("-", "");
 
             EnderecoModel enderecoModel = new();
 
             using var client = new HttpClient();
 
-            var result = await client.GetAsync(_configuration.GetSection("ApiCep")["BaseUrl"] + Cep +"/json");
+            var result = await client.GetAsync(_configuration.GetSection("ApiCep")["BaseUrl"] + cep +"/json");
 
             if(result.IsSuccessStatusCode)
             {
