@@ -95,7 +95,7 @@ namespace JovemProgramadorMVC1.Controllers
             try
             {
                 _alunoRepositorio.ExcluirAluno(alunos);
-                TempData["MensagemSucessoExcluir"] = "Aluno exclído com sucesso";
+                TempData["MensagemSucessoExcluir"] = "Aluno exclído com sucesso!";
                 return RedirectToAction("Index");
             }
             catch (System.Exception)
