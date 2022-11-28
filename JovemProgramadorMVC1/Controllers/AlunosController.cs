@@ -19,12 +19,30 @@ namespace JovemProgramadorMVC1.Controllers
         }
         public IActionResult Index()
         {
-            var alunos = _alunoRepositorio.BuscarAlunos();
-            return View(alunos);
+            try
+            {
+                var alunos = _alunoRepositorio.BuscarAlunos();
+                return View(alunos);
+            }
+            catch (System.Exception)
+            {
+                TempData["MensagemErro"] = "Erro na conexão com o banco de dados";
+                throw;
+            }
+            
         }
         public IActionResult Adicionar()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (System.Exception)
+            {
+                TempData["MensagemErro"] = "Erro na conexão com o banco de dados";
+                throw;
+            }
+            
         }
         public IActionResult InserirAluno(AlunoModel alunos)
         {
@@ -38,15 +56,24 @@ namespace JovemProgramadorMVC1.Controllers
             }
             catch (System.Exception)
             {
-
+                TempData["MensagemErro"] = "Erro na conexão com o banco de dados";
                 throw;
             }
             
         }
         public IActionResult Editar(int id)
         {
-            var aluno = _alunoRepositorio.BuscarId(id);
-            return View(aluno);
+            try
+            {
+                var aluno = _alunoRepositorio.BuscarId(id);
+                return View(aluno);
+            }
+            catch (System.Exception)
+            {
+                TempData["MensagemErro"] = "Erro na conexão com o banco de dados";
+                throw;
+            }
+            
         }
         public IActionResult EditarAluno(AlunoModel alunos)
         {
@@ -60,32 +87,53 @@ namespace JovemProgramadorMVC1.Controllers
             }
             catch (System.Exception)
             {
-
+                TempData["MensagemErro"] = "Erro na conexão com o banco de dados";
                 throw;
             }
         }
         public IActionResult ExcluirAluno(AlunoModel alunos)
         {
-            _alunoRepositorio.ExcluirAluno(alunos);
-            return RedirectToAction("Index");
+            try
+            {
+                _alunoRepositorio.ExcluirAluno(alunos);
+
+                TempData["MensagemSucessoExcluir"] = "Aluno excluído com sucesso!";
+
+                return RedirectToAction("Index");
+            }
+            catch (System.Exception)
+            {
+                TempData["MensagemErro"] = "Erro na conexão com o banco de dados";
+                throw;
+            }
+         
         }
         public async Task<IActionResult> BuscarEndereco(string cep)
         {
-            cep = cep.Replace("-", "");
-
-            EnderecoModel enderecoModel = new();
-
-            using var client = new HttpClient();
-
-            var result = await client.GetAsync(_configuration.GetSection("ApiCep")["BaseUrl"] + cep +"/json");
-
-            if(result.IsSuccessStatusCode)
+            try
             {
-                enderecoModel = JsonSerializer.Deserialize<EnderecoModel>(
-                    await result.Content.ReadAsStringAsync(), new JsonSerializerOptions() { });
-            }
+                cep = cep.Replace("-", "");
 
-            return View("Endereco", enderecoModel);
+                EnderecoModel enderecoModel = new();
+
+                using var client = new HttpClient();
+
+                var result = await client.GetAsync(_configuration.GetSection("ApiCep")["BaseUrl"] + cep + "/json");
+
+                if (result.IsSuccessStatusCode)
+                {
+                    enderecoModel = JsonSerializer.Deserialize<EnderecoModel>(
+                        await result.Content.ReadAsStringAsync(), new JsonSerializerOptions() { });
+                }
+
+                return View("Endereco", enderecoModel);
+            }
+            catch (System.Exception)
+            {
+                TempData["MensagemErro"] = "Erro na conexão com o banco de dados";
+                throw;
+            }
+            
         }
     }
 }
